@@ -84,7 +84,10 @@ nbaplayers <- read_csv("data/nbaadvancedplayers2425.csv")
 ```
 **Answer** DESCRIBE THE RESULTS HERE
 
+#The results given provide 3 types of data, there are characteristic pieces of data like the players name and team, there's quantifiable data like the number of game starts, or free throws, and theres also a category for awards the player has received. 
+
 Now we can inspect the data we imported. What does it look like? To do that, we use `head(nbaplayers)` to show the headers and **the first six rows of data**. If we wanted to see them all, we could just simply enter `nbaplayers` and run it.
+
 
 ```{r}
 head(nbaplayers)
@@ -118,6 +121,8 @@ nbaplayers |>
 
 **Answer** DESCRIBE THE RESULTS HERE
 
+#After sorting all players by respective position, we see that the majority of players are shooting gaurds, while the smallest number of players is the power fowards. Based on this data we could assume that most NBA teams try and make their offense more physical with rebounds.
+
 So let's walk through that. We start with our dataset -- `nbaplayers` -- and then we tell it to group the data by a given field in the data which we get by looking at either the output of `head` or you can look in the environment where you'll see `nbaplayers`.
 
 In this case, we wanted to group together positions, signified by the field name Pos. After we group the data, we need to count them up. In dplyr, we use `summarize` [which can do more than just count things](http://dplyr.tidyverse.org/reference/summarise.html). Inside the parentheses in summarize, we set up the summaries we want. In this case, we just want a count of the positions: `total = n(),` says create a new field, called `total` and set it equal to `n()`, which might look weird, but it's common in stats. The number of things in a dataset? Statisticians call in n. There are n number of players in this dataset. So `n()` is a function that counts the number of things there are.
@@ -134,6 +139,7 @@ nbaplayers |>
 ```
 
 **Answer** HOW WOULD YOU DESCRIBE THE RESULTS?
+#From this data, we see that shooting gaurd has 191 players in that position, while power foward now has the least amount, at 134. This is backwards from what we saw in the initial data count summary. 
 
 We can, if we want, group by more than one thing. Which team has the most of a single position? To do that, we can group by the team -- called Team in the data -- and position, or Pos in the data:
 
@@ -207,3 +213,4 @@ So again, no surprise, shooting guards spend the most minutes on the floor in th
 Among the top five positions, which one seems the most interesting to you and why? What's a possible story here?
 
 **ANSWER** 
+#I think looking at this data, one position that I would be interested in exploring a story with is the power foward position. Because it is so physical and you deal the most with fighting for rebounds and playing aggressive in the paint, I would want to figure out why certain PFs have more or less game time and connect that to the concept of load management. Why do some players have over 2000 minutes played while still being able to have a high turn-over percentage?
